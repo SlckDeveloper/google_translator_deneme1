@@ -10,11 +10,12 @@ class TestTranslation extends StatefulWidget {
 
 class _TestTranslationState extends State<TestTranslation> {
   final translator = GoogleTranslator();
-  String translatedText = 'Çevrilen metin.';
-  String translatingLang= "Çevrilecek dil.";
-  String translatingText = "Çevrilicek metin.";
-  String translatedLang = "Çevirilen dil.";
-  String metin= "";
+  String translatedText = '';
+  String translatingLang= "";
+  String translatingText = "";
+  String translatedLang = "";
+  String metin1= "";
+  String metin2= "";
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +49,11 @@ class _TestTranslationState extends State<TestTranslation> {
                   translatedLang = translation.targetLanguage.name;
                   translatingLang = translation.sourceLanguage.name;
                   translatingText = translation.source;
-                  metin = "$translatingText ($translatingLang) == $translatedText ($translatedLang)";
+                  metin1 = "$translatingText ($translatingLang)";
+                  metin2 = "$translatedText ($translatedLang)";
                   setState(() {
-                    metin;
+                    metin1;
+                    metin2;
                   });
                 },
               ),
@@ -58,7 +61,14 @@ class _TestTranslationState extends State<TestTranslation> {
                 height: 30,
               ),
               Text(
-                metin,
+                metin1,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              const Divider(
+                height: 30,
+              ),
+              Text(
+                metin2,
                 style: Theme.of(context).textTheme.headline5,
               )
             ],
